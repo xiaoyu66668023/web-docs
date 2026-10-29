@@ -33,9 +33,16 @@ export default defineConfig({
         ]
       },
       {
+        text: 'python',
+        items: [
+          { text: 'py基础', link: '/python/python' }, //后面记得加逗号
+        ]
+      },
+      {
         text: 'go语言学习',
         items: [
-          { text: '类型', link: '/go/type' }
+          { text: '类型', link: '/go/type' },
+          { text: '基础', link: '/go/def' }
         ]
       }
     ],
