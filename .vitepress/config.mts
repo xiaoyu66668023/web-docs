@@ -29,6 +29,7 @@ export default defineConfig({
         text: 'web学习',
         items: [
           { text: 'JavaScript基础学习', link: '/web/js' }, //后面记得加逗号
+          { text: 'css学习', link: '/web/css' }, //不需要增加md后缀
         ]
       },
       {
