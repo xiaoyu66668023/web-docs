@@ -2,15 +2,15 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "My Awesome Project",
-  description: "A VitePress Site",
+  title: "欢迎光临我的学习网站",
+  description: "即将面临失业转行，学习新的技能",
   outDir:"docs",
   base:"web-docs/",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: '回到主页', link: '/' },
+      { text: 'Markdown学习例子', link: '/markdown-examples' }
     ],
 
     lastUpdated: {
@@ -28,8 +28,9 @@ export default defineConfig({
       {
         text: 'web学习',
         items: [
+          { text: 'HTML基础学习', link: '/web/html' },
           { text: 'JavaScript基础学习', link: '/web/js' }, //后面记得加逗号
-          { text: 'css学习', link: '/web/css' }, //不需要增加md后缀
+          { text: 'CSS基础学习', link: '/web/css' }, //不需要增加md后缀
         ]
       },
       {
@@ -43,6 +44,12 @@ export default defineConfig({
         items: [
           { text: '类型', link: '/go/type' },
           { text: '基础', link: '/go/def' }
+        ]
+      },
+      {
+        text: 'Markdown学习',
+        items: [
+          { text: '基础语法', link: '/Markdown/Markdownbasics' },
         ]
       }
     ],
