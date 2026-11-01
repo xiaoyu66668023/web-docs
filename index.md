@@ -8,8 +8,8 @@ hero:
   tagline: 基础学习
   actions:
     - theme: brand
-      text: Markdown 内容记录
-      link: /markdown-examples
+      text: 学习 HTML 内容记录
+      link: /web/html
     - theme: alt
       text: API Examples
       link: /api-examples

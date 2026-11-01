@@ -1,0 +1,9 @@
+/* 修改移动端 "Menu" 按钮文字为 "菜单" */
+.VPLocalNav button.menu .menu-text {
+    font-size: 0 !important;
+}
+
+.VPLocalNav button.menu .menu-text::before {
+    content: '菜单';
+    font-size: 14px !important;
+}

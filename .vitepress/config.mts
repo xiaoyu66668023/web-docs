@@ -4,10 +4,18 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "欢迎光临我的学习网站",
   description: "即将面临失业转行，学习新的技能",
+  lang: 'zh-CN',
   outDir:"docs",
   base:"web-docs/",
+  head: [
+    ['link', { rel: 'icon', href: '/web-docs/favicon.ico' }]
+  ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    outline: {
+      label: '本页目录',
+      level: [2, 3],  // 可选：控制显示 h2 和 h3 级别的标题
+    },
     nav: [
       { text: '回到主页', link: '/' },
       { text: 'Markdown学习例子', link: '/markdown-examples' }
@@ -31,12 +39,14 @@ export default defineConfig({
           { text: 'HTML基础学习', link: '/web/html' },
           { text: 'JavaScript基础学习', link: '/web/js' }, //后面记得加逗号
           { text: 'CSS基础学习', link: '/web/css' }, //不需要增加md后缀
+          { text: 'DOM操作', link: '/web/DOM+BOM.md' }, //不需要增加md后缀
         ]
       },
       {
         text: 'python',
         items: [
-          { text: 'py基础', link: '/python/python' }, //后面记得加逗号
+          { text: 'python基础', link: '/python/python' }, //后面记得加逗号
+          { text: 'python不会的内容跟问题', link: '/python/base' }, //后面记得加逗号
         ]
       },
       {
