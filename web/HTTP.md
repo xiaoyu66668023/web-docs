@@ -1,4 +1,4 @@
-## 🌐 HTTP 是什么？
+## HTTP 是什么？
 
 HTTP = HyperText Transfer Protocol（超文本传输协议）。大白话：**浏览器和服务器之间"说话"的规则**。
 
@@ -27,7 +27,7 @@ HTTP = HyperText Transfer Protocol（超文本传输协议）。大白话：**�
 
 ---
 
-## 🛜 免费的测试接口
+## 免费的测试接口
 
 本教程用 **JSONPlaceholder**（完全免费、跨域友好、不用注册）：
 ```
@@ -45,9 +45,9 @@ https://jsonplaceholder.typicode.com/
 
 ---
 
-## 📡 Fetch API（浏览器原生的请求工具）
+##  Fetch API（浏览器原生的请求工具）
 
-### 📌 fetch("url") —— 发请求
+### fetch("url") —— 发请求
 - **作用**：向某个地址发 HTTP 请求
 - **参数**：
   - 第 1 个（必填）：请求地址
@@ -81,7 +81,7 @@ async function 请求用户列表() {
 请求用户列表();
 ```
 
-### 📌 fetch 的 POST 例子（发数据）
+### fetch 的 POST 例子（发数据）
 ```js
 async function 发一条评论() {
   try {
@@ -107,7 +107,7 @@ async function 发一条评论() {
 
 ---
 
-## 📦 Axios（更好用的请求库，Vue 项目里必用）
+## Axios（更好用的请求库，Vue 项目里必用）
 
 **Axios 比 Fetch 好在哪？**
 | Fetch | Axios |
@@ -128,7 +128,7 @@ npm install axios
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 ```
 
-### 📌 axios.get(url) / axios.post(url, data) —— 最常用
+### axios.get(url) / axios.post(url, data) —— 最常用
 - **作用**：发请求，自动处理 JSON 和错误
 - **返回值**：Promise（里面包着一个对象，**数据在 `.data` 属性里**）
 - **例子（对比 Fetch）**：
@@ -149,7 +149,7 @@ async function axios版() {
 axios版();
 ```
 
-### 📌 axios.create(配置) —— 创建一个"定制化 axios"
+### axios.create(配置) —— 创建一个"定制化 axios"
 - **作用**：批量设置 baseURL、超时等，后面用不用都写一遍
 - **返回值**：一个定制化的请求实例
 - **例子**：
@@ -169,7 +169,7 @@ async function getUser(id) {
 getUser(1);
 ```
 
-### 📌 拦截器（面试高频，先看懂就好）
+###  拦截器（面试高频，先看懂就好）
 ```js
 // 请求拦截器：每次发请求前自动执行
 request.interceptors.request.use((config) => {
@@ -191,7 +191,7 @@ request.interceptors.response.use(
 
 ---
 
-## 📝 Day4 作业
+## Day4 作业
 
 ### 作业：新建 `fetch-demo.html`，请求真实接口并渲染到页面
 
