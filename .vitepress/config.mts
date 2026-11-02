@@ -20,7 +20,7 @@ export default defineConfig({
       { text: '回到主页', link: '/' },
       { text: 'Markdown学习例子', link: '/markdown-examples' }
     ],
-
+    // 最后更新时间
     lastUpdated: {
       text: 'Last Updated',
        formatOptions: {

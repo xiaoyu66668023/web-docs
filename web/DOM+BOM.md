@@ -1,8 +1,8 @@
-# DOM + BOM：让页面"听你指挥"（4h）
+# DOM + BOM：让页面听你指挥
 
 ---
 
-## 🧩 DOM 是什么？
+## DOM 是什么？
 
 DOM = Document Object Model（文档对象模型）。**大白话：浏览器把 HTML 页面里的所有标签都变成了可以被 JS 操控的"对象"**。
 
@@ -27,11 +27,22 @@ box.innerText = "改了！";
 box.style.background = "red";
 ```
 
+| 名称 | 类型 | 能不能自己改 |
+|------|------|:---:|
+| `box`、`p`、`btn` | 自定义变量名 | ✅ 随便改 |
+| `document` | 浏览器自带对象 | ❌ 不能改 |
+| `querySelector` | 自带方法 | ❌ 不能改 |
+| `onclick` | 自带事件属性 | ❌ 不能改 |
+| `innerText` | 自带属性 | ❌ 不能改 |
+| `style` | 自带样式对象 | ❌ 不能改 |
+| `color` / `background` | 样式属性 | ❌ 不能改 |
+| `let`、`function` | JS 关键字 | ❌ 不能改 |
+| `id="box"`、`class="red"` | HTML 自定义标识 | ✅ 你自己设置 |
 ---
 
-## 🔱 选择器：怎么找到页面上的元素？
+## 选择器：怎么找到页面上的元素？
 
-### 📌 document.querySelector("选择器") —— 选第一个匹配的
+### document.querySelector("选择器") —— 选第一个匹配的
 - **作用**：按 CSS 选择器语法选第一个符合的元素
 - **参数**：一个字符串（CSS 选择器语法，比如 "#id"、".class"、"标签名"）
 - **返回值**：选中的那个元素对象（没找到返回 `null`）
@@ -51,7 +62,8 @@ let btn = document.querySelector("button");
 let firstLi = document.querySelector("ul li:first-child");
 ```
 
-### 📌 document.querySelectorAll("选择器") —— 选所有匹配的
+
+### document.querySelectorAll("选择器") —— 选所有匹配的
 - **作用**：选所有符合条件的，返回一个"类似数组"的集合
 - **返回值**：NodeList（不是真的数组！要转数组才能用 map/filter）
 - **例子**：
@@ -67,15 +79,15 @@ allLis.forEach(li => console.log(li));
 let liArray = [...allLis];   // 扩展运算符一键转
 ```
 
-### 📌 document.getElementById("id") —— 老写法，只能按 id 选
+### document.getElementById("id") —— 老写法，只能按 id 选
 - 跟 `document.querySelector("#id")` 等价，但更旧
 - 现代写法推荐直接用 `querySelector`
 
 ---
 
-## ✋ 事件绑定：让元素"会反应"
+## 事件绑定：让元素"会反应"
 
-### 📌 元素.addEventListener("事件名", 回调函数)
+### 元素.addEventListener("事件名", 回调函数)
 - **作用**：告诉浏览器"当这个元素发生某件事时，执行这段代码"
 - **参数**：
   - 第 1 个（必填）：事件名字符串（`"click"`、`"input"`、`"keydown"` 等）
@@ -138,7 +150,7 @@ document.querySelector("#fruitList").addEventListener("click", (e) => {
 
 ---
 
-## 🔨 增删改查 DOM 元素
+## 增删改查 DOM 元素
 
 ### 改内容
 ```js
@@ -184,13 +196,13 @@ item.remove();   // 一键删除
 
 ---
 
-## 🪟 BOM：操控浏览器窗口
+## BOM：操控浏览器窗口
 
 BOM = Browser Object Model，就是 `window` 对象下面的东西。
 
 ### 最常用的 4 个 BOM 对象
 
-#### 1. 📌 window.location —— 地址栏相关
+#### 1. window.location —— 地址栏相关
 ```js
 location.href      // "https://www.baidu.com/" 完整网址（可读可写，写了会跳转）
 location.hostname  // "www.baidu.com" 域名
@@ -204,14 +216,14 @@ location.assign("https://www.baidu.com");
 location.replace("https://www.baidu.com");  // ← 不进历史记录，不能后退
 ```
 
-#### 2. 📌 window.history —— 前进后退
+#### 2. window.history —— 前进后退
 ```js
 history.back();     // 后退一页（点浏览器 ←）
 history.forward();  // 前进一页（点浏览器 →）
 history.go(-3);     // 后退 3 页
 ```
 
-#### 3. 📌 window.localStorage —— 本地存储（**Day3 Todo 必用**）
+#### 3. window.localStorage —— 本地存储（**Day3 Todo 必用**）
 浏览器里存数据，关掉浏览器还在。**只能存字符串！**
 
 ```js
@@ -228,7 +240,7 @@ localStorage.removeItem("userName");
 // 全清
 localStorage.clear();
 
-// ⚠️ 存对象/数组必须转字符串！取回来再转回来
+//  存对象/数组必须转字符串！取回来再转回来
 let myData = { name: "张三", list: [1, 2, 3] };
 localStorage.setItem("myData", JSON.stringify(myData));   // 对象→字符串
 
@@ -237,7 +249,7 @@ console.log(取回来.name);   // "张三"
 console.log(取回来.list);   // [1, 2, 3]
 ```
 
-#### 4. 📌 window.navigator —— 浏览器信息（了解）
+#### 4. window.navigator —— 浏览器信息（了解）
 ```js
 navigator.userAgent   // 浏览器名字、版本、操作系统
 navigator.language    // 浏览器语言，比如 "zh-CN"
@@ -246,7 +258,7 @@ navigator.platform    // 操作系统，比如 "Win32"
 
 ---
 
-## 🎯 Day3 核心作业：原生 Todo 应用
+## Day3 核心作业：原生 Todo 应用
 
 **目标**：写一个网页，能添加待办、删除待办、刷新页面数据不丢。
 
@@ -360,7 +372,7 @@ navigator.platform    // 操作系统，比如 "Win32"
 ```
 
 **验收清单（跑起来后自测）**：
-- [ ] 输入框打字 → 点添加 → 列表多出一项 ✅
-- [ ] 点"删除" → 那一项消失 ✅
-- [ ] **刷新浏览器页面** → 之前添加的待办还在 ✅（这就是 localStorage 的威力！）
-- [ ] 空输入点添加 → 不会加空白项 ✅
+- [x] 输入框打字 → 点添加 → 列表多出一项 ✅
+- [x] 点"删除" → 那一项消失 ✅
+- [x] **刷新浏览器页面** → 之前添加的待办还在 ✅（这就是 localStorage 的威力！）
+- [x] 空输入点添加 → 不会加空白项 ✅

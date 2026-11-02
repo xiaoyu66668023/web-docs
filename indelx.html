@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>我的待办</title>
+  <style>
+    /* 纯装饰性样式，看不懂就直接复制 */
+    body { font-family: sans-serif; max-width: 400px; margin: 40px auto; }
+    li { margin: 6px 0; }
+    button { margin-left: 8px; cursor: pointer; }
+    .done { text-decoration: line-through; color: #999; }
+  </style>
+</head>
+<body>
+  <h3>📝 我的待办清单</h3>
+
+  <!-- 这是输入框，用户在这里打字 -->
+  <input type="text" id="inp" placeholder="输入待办事项" style="width:240px;padding:6px;">
+
+  <!-- 这是添加按钮 -->
+  <button id="addBtn" style="padding:6px 12px;">添加</button>
+
+  <!-- 这是列表，待办项都塞在这个 ul 里 -->
+  <ul id="list"></ul>
+
+  <script>
+    // ========== 第一步：先"选到"页面上的元素 ==========
+    const inpEl = document.querySelector("#inp");       // 输入框
+    const addBtn = document.querySelector("#addBtn");    // 添加按钮
+    const listEl = document.querySelector("#list");      // 列表容器
+
+    // ========== 第二步：准备数据 ==========
+    // 从 localStorage 读之前存的待办；没有就用空数组
+    // JSON.parse 把 localStorage 里的字符串变回数组
+    let todoList = JSON.parse(localStorage.getItem("myTodos")) || [];
+    // localStorage 只能存字符串，所以读出来是字符串格式的数组
+    // JSON.parse 负责把 "[\"吃饭\",\"睡觉\"]" → ["吃饭", "睡觉"]
+
+    // ========== 第三步：定义三个函数 ==========
+
+    // 函数 1：保存数据到 localStorage
+    function save() {
+      // localStorage.setItem(键名, 值) —— 值必须是字符串
+      // JSON.stringify 把数组/对象变成字符串
+      localStorage.setItem("myTodos", JSON.stringify(todoList));
+    }
+
+    // 函数 2：渲染（把 todoList 数组里的东西"画"到页面上）
+    function render() {
+      listEl.innerHTML = "";   // 先清空列表，准备重画
+
+      // 遍历数组，每个待办项生成一个 <li>
+      todoList.forEach((item, index) => {
+        // 造一个新的 <li> 元素
+        const li = document.createElement("li");
+        li.innerText = item;   // 把待办文字塞进去
+
+        // 造一个"删除"按钮
+        const delBtn = document.createElement("button");
+        delBtn.innerText = "删除";
+
+        // 点击删除按钮时：
+        delBtn.addEventListener("click", () => {
+          // splice(从哪个下标开始, 删几个) —— 直接改原数组
+          todoList.splice(index, 1);
+          save();     // 存回 localStorage
+          render();   // 重新画页面
+        });
+
+        // 把删除按钮塞进 li
+        li.appendChild(delBtn);
+        // 把 li 塞进 ul 列表
+        listEl.appendChild(li);
+      });
+    }
+
+    // 函数 3：添加待办
+    function addTodo() {
+      const val = inpEl.value.trim();   // 取输入框的值，trim() 去首尾空格
+      if (!val) return;                  // 如果是空的，就什么也不做
+
+      todoList.push(val);   // 推进数组
+      inpEl.value = "";     // 清空输入框
+      save();               // 存回 localStorage
+      render();             // 重新画页面
+    }
+
+    // ========== 第四步：绑事件 + 启动 ==========
+
+    // 点击"添加"按钮 → 执行 addTodo 函数
+    addBtn.addEventListener("click", addTodo);
+
+    // 在输入框按回车 → 也执行 addTodo 函数
+    inpEl.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") addTodo();
+    });
+
+    // 页面加载时先渲染一次（把之前存的待办显示出来）
+    render();
+  </script>
+</body>
+</html>

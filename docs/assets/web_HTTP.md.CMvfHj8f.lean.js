@@ -1,1 +1,0 @@
-import{at as e,it as t,n,vt as r}from"./chunks/framework.C8Fy2rKT.js";var i=JSON.parse(`{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"web/HTTP.md","filePath":"web/HTTP.md","lastUpdated":0}`),a={name:`web/HTTP.md`};function o(n,i,a,o,s,c){return r(),t(`div`,null,[...i[0]||=[e("",43)]])}var s=n(a,[[`render`,o]]);export{i as __pageData,s as default};
